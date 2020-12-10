@@ -9,22 +9,29 @@
         :zoom="15" 
         style="width: 100%; height: 500px"
       >
-        <GmapInfoWindow
-          :options="infoOptions" 
-          :position="infoWindowPos" 
-          :opened="infoWinOpen" 
-          @closeclick="infoWinOpen=false"
-        >
-        </GmapInfoWindow>
-        <GmapMarker 
+        <div
           :key="i" 
           v-for="(m,i) in markers" 
-          :position="m.position" 
-          :icon ="m.icon"
-          :clickable="true" 
-          @click="toggleInfoWindow(m,i)"
         >
-        </GmapMarker>
+          <GmapInfoWindow
+            :options="infoOptions" 
+            :position="infoWindowPos" 
+            :opened="infoWinOpen" 
+            @closeclick="infoWinOpen=false"
+          >
+            <inner-component>
+              {{dummyInfo}}
+              <counter></counter>
+            </inner-component>
+          </GmapInfoWindow>
+          <GmapMarker 
+            :position="m.position" 
+            :icon ="m.icon"
+            :clickable="true" 
+            @click="toggleInfoWindow(m,i)"
+          >
+          </GmapMarker>
+        </div>
       </GmapMap>
     </div>
   </div>
@@ -32,13 +39,14 @@
 
 <script>
 import {gmapApi} from 'vue2-google-maps'
-import counter from './components/Counter'
+import Counter from './components/Counter'
+import InnerComponent from './components/InnerComponent'
 
 export default {
   name: 'App',
 
   components: {
-    counter
+    Counter,InnerComponent
   },
 
   computed: {
@@ -54,9 +62,10 @@ export default {
       infoWindowPos: null,
       infoWinOpen: false,
       currentMidx: null,
+      dummyInfo: null,
 
       infoOptions: {
-      content: '',
+      //content: '',
       //optional: offset infowindow so it visually sits nicely on top of our marker
       pixelOffset: {
           width: 0,
@@ -68,20 +77,23 @@ export default {
           lat: 47.376332,
           lng: 8.547511
       },
-      infoText: '<strong>Marker 1</strong><br><a href="https://www.baidu.com">Jump to a link</a>',
+      dummyInfo: 1,
+      //infoText: '<strong>Marker 1</strong><br><a href="https://www.baidu.com">Jump to a link</a>',
       icon: { url: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2106328784,1168031945&fm=26&gp=0.jpg', scaledSize: { width: 50, height: 50 } }
       }, {
       position: {
           lat: 47.374592,
           lng: 8.548867
       },
-      infoText: '<strong>Marker 2</strong>'
+      dummyInfo: 2,
+      //infoText: '<strong>Marker 2</strong>'
       }, {
       position: {
           lat: 47.379592,
           lng: 8.549867
       },
-      infoText: '<strong>Marker 3</strong>'
+      dummyInfo: 3,
+      //infoText: '<strong>Marker 3</strong>'
       }]
     }
   },
@@ -89,7 +101,8 @@ export default {
   methods: {
       toggleInfoWindow: function(marker, idx) {
           this.infoWindowPos = marker.position;
-          this.infoOptions.content = marker.infoText;
+          this.dummyInfo = marker.dummyInfo;
+          //this.infoOptions.content = marker.infoText;
           //check if its the same marker that was selected if yes toggle
           if (this.currentMidx == idx) {
               this.infoWinOpen = !this.infoWinOpen;
