@@ -21,7 +21,11 @@
           >
             <inner-component>
               {{dummyInfo}}
-              <counter></counter>
+              <div style="display: felx; flex-direction:column; justify-content: center">
+                <counter></counter>
+                <br>
+                <new-todos></new-todos>
+              </div>
             </inner-component>
           </GmapInfoWindow>
           <GmapMarker 
@@ -41,12 +45,14 @@
 import {gmapApi} from 'vue2-google-maps'
 import Counter from './components/Counter'
 import InnerComponent from './components/InnerComponent'
+import NewTodos from './components/NewTodos.vue'
+//import NewTodos from './components/NewTodos'
 
 export default {
   name: 'App',
 
   components: {
-    Counter,InnerComponent
+    Counter,InnerComponent,NewTodos
   },
 
   computed: {
