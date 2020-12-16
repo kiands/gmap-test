@@ -3,18 +3,18 @@
   "short_name": "gt",
   "icons": [
     {
-      "src": "./src/assets/logo.png",
+      "src": "img/icons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./src/assets/logo.png",
+      "src": "img/icons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#2d8cf0",
   "theme_color": "#4DBA87"
 }
