@@ -46,7 +46,6 @@ import {gmapApi} from 'vue2-google-maps'
 import Counter from './components/Counter'
 import InnerComponent from './components/InnerComponent'
 import NewTodos from './components/NewTodos.vue'
-//import NewTodos from './components/NewTodos'
 
 export default {
   name: 'App',
