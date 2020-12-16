@@ -10,6 +10,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "pwa-manifest-webpack-plugin": "^1.0.5",
     "register-service-worker": "^1.7.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
