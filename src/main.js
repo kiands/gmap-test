@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import vuetify from '@/plugins/vuetify' // path to vuetify export
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
