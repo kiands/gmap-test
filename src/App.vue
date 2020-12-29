@@ -6,7 +6,8 @@
       <router-link to="/login">Go to Login</router-link>
       <router-link to="/gmap">Go to Gmap</router-link>
       <router-link to="/addShop">Go to addShop</router-link>
-      <router-link to="/Counter">Go to Counter</router-link>
+      <router-link to="/counter">Go to Counter</router-link>
+      <router-link to="/todos">Go to Todos</router-link>
     </div>
   </div>
 </template>

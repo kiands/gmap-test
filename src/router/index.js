@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Gmap from '@/components/Gmap'
 import AddShop from '@/components/AddShop'
 import Counter from '@/components/Counter'
+import NewTodos from '@/components/NewTodos'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/counter',
       name: 'GmapCounter',
       component: Counter
+    },
+    {
+      path: '/todos',
+      name: 'NewTodos',
+      component: NewTodos
     }
   ]
 })
