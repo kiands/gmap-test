@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Gmap from '@/components/Gmap'
 import AddShop from '@/components/AddShop'
+import Counter from '@/components/Counter'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/gmap',
       name: 'Gmap',
       component: Gmap
+    },
+    {
+      path: '/counter',
+      name: 'GmapCounter',
+      component: Counter
     }
   ]
 })
