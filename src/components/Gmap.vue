@@ -1,9 +1,75 @@
 <template>
-    <v-card>
+    <div style="width: 100vw; height: 100vh;">
+    <div id="container__top">
+    <div style="display: flex; align-items: center">
+    <v-toolbar
+      dense
+      floating
+      style="width: 45vw"
+    >
+      <v-text-field
+        hide-details
+        prepend-icon="mdi-magnify"
+        single-line
+      ></v-text-field>
+    </v-toolbar>
+    </div>
+    <v-btn 
+      class="mx-2"
+      fab
+      color="indigo"
+    >
+      <v-icon dark>
+        mdi-plus
+      </v-icon>
+    </v-btn>
+    </div>
+    <div id="toolbar__bottom">
+      <div id="bar__inner__top">
+        <span id="banner">土城區 完成度 58%</span>
+        <v-btn
+          class="mx-2"
+          fab
+          color="indigo"
+        >
+          <v-icon dark>
+            mdi-plus
+          </v-icon>
+        </v-btn>
+      </div>
+      <div id="bar__inner__bottom">
+        <v-btn
+          class="mx-2"
+          fab
+          color="indigo"
+        >
+          <v-icon dark>
+            mdi-plus
+          </v-icon>
+        </v-btn>
+        <v-btn-toggle>
+          <v-btn style="color: grey">
+            是
+          </v-btn>
+          <v-btn style="color: grey">
+            否
+          </v-btn>
+        </v-btn-toggle>
+        <v-btn
+          class="mx-2"
+          fab
+          color="indigo"
+        >
+          <v-icon dark>
+            mdi-plus
+          </v-icon>
+        </v-btn>
+        </div>
+    </div>
     <GmapMap 
     :center="center" 
     :zoom="15" 
-    style="width: 100vw; height: 100vh"
+    style="width: 100%; height: 100%; position: relative; top: -145px"
     >
     <div
         :key="i" 
@@ -33,11 +99,56 @@
         </GmapMarker>
     </div>
     </GmapMap>
-    </v-card>
+    </div>
 </template>
 
-<script>
+<style scoped>
+  #container__top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 8vh;
+    left: 10px;
+    z-index: 2;
+    margin-right: 15px
+  }
 
+  #toolbar__bottom{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 90vh;
+    left: 10px;
+    z-index: 2;
+    margin-right: 75px
+  }
+
+  #bar__inner__top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 43%;
+    margin-bottom: 10px
+  }
+
+  #banner{
+    height: 25px;
+    border-radius: 5px;
+    color: white;
+    background-color: grey
+  }
+
+  #bar__inner__bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+  }
+</style>
+
+<script>
 import {gmapApi} from 'vue2-google-maps'
 import Counter from './Counter'
 import InnerComponent from './InnerComponent'
