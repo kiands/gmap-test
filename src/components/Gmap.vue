@@ -109,7 +109,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    top: 8vh;
+    top: 15vh;
     left: 10px;
     z-index: 2;
     margin-right: 15px
@@ -119,10 +119,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 90vh;
+    top: 75vh;
     left: 10px;
     z-index: 2;
-    margin-right: 75px
+    margin-right: 90px
   }
 
   #bar__inner__top{
@@ -130,7 +130,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-left: 43%;
+    margin-left: 45%;
     margin-bottom: 10px
   }
 
