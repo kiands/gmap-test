@@ -54,20 +54,14 @@
             mdi-account-circle
           </v-icon>
         </v-btn>
-        <v-col
-          cols="12"
-          sm="6"
-          class="py-2"
-        >
-          <v-btn-toggle v-model="toggle_exclusive">
-            <v-btn>
-              <v-icon>mdi-crosshairs-gps</v-icon>
-            </v-btn>
-            <v-btn>
-              <v-icon>mdi-menu</v-icon>
-            </v-btn>
-          </v-btn-toggle>
-        </v-col>
+        <v-btn-toggle v-model="toggle_exclusive">
+          <v-btn>
+            <v-icon>mdi-crosshairs-gps</v-icon>
+          </v-btn>
+          <v-btn>
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </v-btn-toggle>
         <v-btn
           class="mx-2"
           fab
@@ -82,7 +76,7 @@
     <GmapMap 
     :center="center" 
     :zoom="15" 
-    style="width: 100%; height: 100%; position: relative; top: -195px"
+    style="width: 100%; height: 100%; position: relative; top: -178px"
     >
     <div
         :key="i" 
