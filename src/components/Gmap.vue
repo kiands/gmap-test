@@ -69,7 +69,7 @@
     <GmapMap 
     :center="center" 
     :zoom="15" 
-    style="width: 100%; height: 100%; position: relative; top: -145px"
+    style="width: 100%; height: 100%; position: relative; top: -178px"
     >
     <div
         :key="i" 
@@ -122,7 +122,7 @@
     top: 75vh;
     left: 10px;
     z-index: 2;
-    margin-right: 90px
+    margin-right: 75px
   }
 
   #bar__inner__top{
@@ -138,6 +138,7 @@
     height: 25px;
     border-radius: 5px;
     color: white;
+    font-size: 10px;
     background-color: grey
   }
 
