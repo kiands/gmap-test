@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 100vw; height: 100vh;">
+    <div style="width: 100vw; height: 90vh;">
     <div id="container__top">
     <div style="display: flex; align-items: center">
     <v-toolbar
@@ -26,7 +26,8 @@
     </div>
     <div id="toolbar__bottom">
       <div id="bar__inner__top">
-        <span id="banner">土城區 完成度 58%</span>
+        <div style="width: 5%"></div>
+        <div id="banner">土城區 完成度 58%</div>
         <v-btn
           class="mx-2"
           fab
@@ -109,7 +110,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    top: 15vh;
+    top: 10vh;
     left: 10px;
     z-index: 2;
     margin-right: 15px
@@ -119,7 +120,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 75vh;
+    top: 60vh;
     left: 10px;
     z-index: 2;
     margin-right: 75px
@@ -130,11 +131,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-left: 45%;
     margin-bottom: 10px
   }
 
   #banner{
+    display: flex;
+    align-items: center;
     height: 25px;
     border-radius: 5px;
     color: white;
