@@ -26,8 +26,11 @@
     </div>
     <div id="toolbar__bottom">
       <div id="bar__inner__top">
-        <div style="width: 10%"></div>
-        <div id="banner">土城區 完成度 58%</div>
+        <div style="width: 33%"></div>
+        <div style="width: 33%; display: flex; justify-content: center">
+          <div id="banner">土城區 完成度 58%</div>
+        </div>
+        <div style="width: 33%; display: flex; justify-content: flex-end">
         <v-btn
           class="mx-2"
           fab
@@ -38,6 +41,7 @@
             mdi-plus
           </v-icon>
         </v-btn>
+        </div>
       </div>
       <div id="bar__inner__bottom">
         <v-btn
@@ -50,18 +54,20 @@
             mdi-account-circle
           </v-icon>
         </v-btn>
-        <v-btn-toggle>
-          <v-btn style="color: grey">
-            <v-icon>
-              mdi-crosshairs-gps
-            </v-icon>
-          </v-btn>
-          <v-btn style="color: grey">
-            <v-icon>
-              mdi-menu
-            </v-icon>
-          </v-btn>
-        </v-btn-toggle>
+        <v-col
+          cols="12"
+          sm="6"
+          class="py-2"
+        >
+          <v-btn-toggle v-model="toggle_exclusive">
+            <v-btn>
+              <v-icon>mdi-crosshairs-gps</v-icon>
+            </v-btn>
+            <v-btn>
+              <v-icon>mdi-menu</v-icon>
+            </v-btn>
+          </v-btn-toggle>
+        </v-col>
         <v-btn
           class="mx-2"
           fab
@@ -76,7 +82,7 @@
     <GmapMap 
     :center="center" 
     :zoom="15" 
-    style="width: 100%; height: 100%; position: relative; top: -178px"
+    style="width: 100%; height: 100%; position: relative; top: -195px"
     >
     <div
         :key="i" 
@@ -153,7 +159,8 @@
   #bar__inner__bottom{
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: center
   }
 </style>
 
