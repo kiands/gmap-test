@@ -20,18 +20,19 @@
       color="indigo"
     >
       <v-icon dark>
-        mdi-plus
+        mdi-refresh
       </v-icon>
     </v-btn>
     </div>
     <div id="toolbar__bottom">
       <div id="bar__inner__top">
-        <div style="width: 5%"></div>
+        <div style="width: 10%"></div>
         <div id="banner">土城區 完成度 58%</div>
         <v-btn
           class="mx-2"
           fab
           color="indigo"
+          @click="addShop"
         >
           <v-icon dark>
             mdi-plus
@@ -43,17 +44,22 @@
           class="mx-2"
           fab
           color="indigo"
+          @click="login"
         >
           <v-icon dark>
-            mdi-plus
+            mdi-account-circle
           </v-icon>
         </v-btn>
         <v-btn-toggle>
           <v-btn style="color: grey">
-            是
+            <v-icon>
+              mdi-crosshairs-gps
+            </v-icon>
           </v-btn>
           <v-btn style="color: grey">
-            否
+            <v-icon>
+              mdi-menu
+            </v-icon>
           </v-btn>
         </v-btn-toggle>
         <v-btn
@@ -61,8 +67,8 @@
           fab
           color="indigo"
         >
-          <v-icon dark>
-            mdi-plus
+          <v-icon>
+            mdi-switch
           </v-icon>
         </v-btn>
         </div>
@@ -227,6 +233,12 @@ export default {
               this.infoWinOpen = true;
               this.currentMidx = idx;
           }
+      },
+      login: function(){
+        this.$router.push('/login')
+      },
+      addShop: function(){
+        this.$router.push('/addShop')
       }
     }
   }
