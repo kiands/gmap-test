@@ -8,6 +8,7 @@
       <router-link to="/addShop">Go to addShop</router-link>
       <router-link to="/counter">Go to Counter</router-link>
       <router-link to="/todos">Go to Todos</router-link>
+      <router-link to="/parent">Go to Parent</router-link>
     </div>
   </div>
 </template>

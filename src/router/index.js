@@ -6,6 +6,7 @@ import Gmap from '@/components/Gmap'
 import AddShop from '@/components/AddShop'
 import Counter from '@/components/Counter'
 import NewTodos from '@/components/NewTodos'
+import Parent from '@/components/Parent'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/todos',
       name: 'NewTodos',
       component: NewTodos
+    },
+    {
+      path: '/parent',
+      name: 'Parent',
+      component: Parent
     }
   ]
 })

@@ -1,6 +1,6 @@
 <template>
     <div id="newTodos">
-        <input v-model="content" />
+        <input @keyup.enter="addTodo()" v-model="content" />
         <button @click="addTodo()">add</button>
         <ul v-if="todos.length > 0">
             <!--index属性本身就存在；v-bind中，completed可改变真/假的状态。真即存在此style，假即不存在-->
@@ -55,6 +55,9 @@
 		methods: {
 			addTodo: function () {
                 this.todos.push({content:this.content,completed:false,editing:false})
+                //傳遞
+                this.$emit('parentShow',this.content)
+                //要傳遞content，就要在歸零之前傳出去
                 this.content = null
             },
             editTodo: function (index,content) {

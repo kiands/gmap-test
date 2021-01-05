@@ -27,6 +27,7 @@ export default {
         this.isDisabled = false
         this.plus_isDisabled = false
       }
+      this.$emit('parentShow',this.info)
     },
     plus: function() {
       this.info = this.info + 1
@@ -37,6 +38,7 @@ export default {
         this.isDisabled = false
         this.minus_isDisabled = false
       }
+      this.$emit('parentShow',this.info)
     }
   }
 }
