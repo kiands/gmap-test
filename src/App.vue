@@ -9,6 +9,7 @@
       <router-link to="/counter">Go to Counter</router-link>
       <router-link to="/todos">Go to Todos</router-link>
       <router-link to="/parent">Go to Parent</router-link>
+      <router-link to="/Cam">Go to Cam</router-link>
     </div>
   </div>
 </template>

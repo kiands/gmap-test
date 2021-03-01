@@ -7,6 +7,7 @@ import AddShop from '@/components/AddShop'
 import Counter from '@/components/Counter'
 import NewTodos from '@/components/NewTodos'
 import Parent from '@/components/Parent'
+import Cam from '@/components/Cam'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/parent',
       name: 'Parent',
       component: Parent
+    },
+    {
+      path: '/cam',
+      name: 'Cam',
+      component: Cam
     }
   ]
 })

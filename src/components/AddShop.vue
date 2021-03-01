@@ -9,6 +9,11 @@
       >
         <v-card>
           <v-icon>mdi-camera</v-icon>
+          <v-file-input multiple
+            accept="image/png, image/jpeg, image/bmp"
+            id="images"
+          >
+          </v-file-input>
         </v-card>
       </v-col>
     </v-row>
@@ -153,6 +158,10 @@
         </v-btn>
       </v-col>
     </v-row>
+    <v-btn @click="showCam()">点击使用網頁拍攝</v-btn>
+    <v-btn @click="downloadPics()">下載拍攝的照片</v-btn>
+    <v-btn @click="readExif()">寫入exif信息</v-btn>
+    <cam v-if="show" style="z-index: 2; position: absolute; top: 100px" @on-close="cancelOrRecord(arguments)"></cam>
   </v-container>
 </v-app>
 </div>
@@ -165,9 +174,59 @@
 </style>
 
 <script>
+  import cam from '@/components/Cam'
+  import Exif from '../../node_modules/exif-js'
+
   export default {
+    components: { cam },
     data: () => ({
       items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      album: '',
+      position: '',
+      exif: '',
+      show: false
     }),
+    methods: {
+      showCam () {
+        this.show = true
+      },
+      cancelOrRecord (data) {
+        if (data[0] == "save") {
+          this.show = false
+          this.album = data[1]
+          this.position = data[2]
+        } else {
+          this.show = false
+        }
+      },
+      downloadPics () {
+        for (var i = 0; i < this.album.length; i++) {
+          const photoName = `${new Date().getTime()}`
+          const dataurl = this.album[i]
+          const arr = dataurl.split(',')
+          // 将base64编码转为字符串
+          const bstr = window.atob(arr[1])
+          let n = bstr.length
+          const u8arr = new Uint8Array(n) // 创建初始化为0的，包含length个元素的无符号整型数组
+          while (n--) {
+            u8arr[n] = bstr.charCodeAt(n)
+          }
+          const file = new File([u8arr], photoName, {type: 'image/jpeg',})
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(file);
+          link.download = photoName;
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+        }
+      },
+      readExif () {
+        var file = document.getElementById("images").files[0]
+        let self = this
+        Exif.getData(file, function(){
+          //Orientation = Exif.getTag(this, 'Orientation');
+          self.exif = Exif.getAllTags(this)
+        })
+      }
+    }
   }
 </script>
