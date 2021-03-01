@@ -13,7 +13,7 @@
         <span>本次相簿</span>
         <div v-for="(img,id) in album" :key="id" id="album">
             <div id="photo--single">
-                <img v-bind:src="img" width=300 height=225>
+                <img v-bind:src="img" width=225 height=300>
                 <button @click="deleteImg(id)">delete</button>
             </div>
         </div>
