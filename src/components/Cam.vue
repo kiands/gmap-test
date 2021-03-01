@@ -28,24 +28,20 @@
         flex-direction: column;
         align-items: center
     }
-
     #shutter{
         margin-bottom: 30px
     }
-
     #photo--last{
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 30px;
     }
-
     #album{
         display: flex;
         flex-direction: column;
         align-items: center
     }
-
     #photo--single{
         display: flex;
         flex-direction: row;
@@ -54,21 +50,23 @@
 </style>
 
 <script>
-
     export default {
       data () {
         return {
             album:[],
             geoinfo: '',
-            canvas: document.querySelector("#canvas"),
-            video: document.querySelector("#video"),
+            //canvas: document.querySelector("#canvas"),
+            //video: document.querySelector("#video"),
             width: 600,//视频和canvas的宽度
             height: 0,
             streaming: false
         }
       },
-
       mounted: function () {
+
+        var canvas = document.querySelector("#canvas")
+        var video = document.querySelector("#video")
+
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
               console.log("success")
@@ -82,14 +80,12 @@
         
         // 思考：created和mounted和updated的區別以及何時使用this
         // 获取用户媒体,包含视频和音频
-
         navigator.mediaDevices.getUserMedia({video: { facingMode: { exact: "environment" } }, audio: false}).then(stream => {
           video.srcObject = stream;// 将捕获的视频流传递给video，放弃window.URL.createObjectURL(stream)的使用
           video.play();// 播放视频
           //audio.srcObject = stream;
           //audio.play();
         })
-
         // 监听视频流就位事件,即视频可以播放了
         video.addEventListener('canplay', function(ev){
           if (!this.streaming) {
@@ -100,7 +96,6 @@
           }
         }, false)
       },
-
       methods: {
         deleteImg(id) {
           this.album.splice(id,1)
@@ -126,7 +121,6 @@
           tracks.forEach(function(track) {
             track.stop()
           })
-
           let self = this// 在裡面寫會撞車，需要把vue的實例換個詞
           if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
@@ -142,7 +136,6 @@
           } else {
             console.debug('不支持获取GPS地理位置');
           }
-
           const status = "save"
           this.$emit('on-close',status,this.album,this.geoinfo)
           this.album = null
