@@ -83,7 +83,7 @@
         // 思考：created和mounted和updated的區別以及何時使用this
         // 获取用户媒体,包含视频和音频
 
-        navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(stream => {
+        navigator.mediaDevices.getUserMedia({video: { facingMode: { exact: "environment" } }, audio: false}).then(stream => {
           video.srcObject = stream;// 将捕获的视频流传递给video，放弃window.URL.createObjectURL(stream)的使用
           video.play();// 播放视频
           //audio.srcObject = stream;
