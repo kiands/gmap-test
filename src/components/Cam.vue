@@ -92,7 +92,7 @@
           start.addEventListener('click',() => {
             video.play()
           })
-          video.play();// 播放视频
+          //video.play();// 播放视频
           //audio.srcObject = stream;
           //audio.play();
         })
