@@ -3,12 +3,7 @@
         <title>JS WebRTC</title>
         <div id="viewer">
             <span>取景器</span>
-            <video 
-              id="video" width=500 height=375
-              webkit-playsinline="true"
-              playsinline="true"
-            >
-            </video>
+            <video id="video" width=500 height=375></video>
         </div>
         <button @click="shutter()" id="shutter">拍照</button>
         <div id="photo--last">
@@ -24,7 +19,6 @@
         </div>
         <v-btn @click="closeAndSubmit()">Submit</v-btn>
         <v-btn @click="closeAndSubmit()">Cancel</v-btn>
-        <v-btn id="start">Start Streaming</v-btn>
     </div>
 </template>
 
@@ -86,28 +80,21 @@
         
         // 思考：created和mounted和updated的區別以及何時使用this
         // 获取用户媒体,包含视频和音频
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } }, audio: false }).then(stream => {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
           video.srcObject = stream;// 将捕获的视频流传递给video，放弃window.URL.createObjectURL(stream)的使用
-          var start = document.getElementById("start")
-          start.addEventListener('click',() => {
-            video.play()
-          })
           video.play();// 播放视频
           //audio.srcObject = stream;
           //audio.play();
         })
-        // 监听视频流就位事件,即视频可以播放了（暂时放弃监听）
-        canvas.setAttribute('width', 375);
-        canvas.setAttribute('height', 500);
-        this.streaming = !this.streaming;
-        //video.addEventListener('canplay', function(ev){
-        //  if (!this.streaming) {
-        //    //height = video.videoHeight / (video.videoWidth/width);
-        //    canvas.setAttribute('width', 375);
-        //    canvas.setAttribute('height', 500);
-        //    this.streaming = !this.streaming;
-        //  }
-        //}, false)
+        // 监听视频流就位事件,即视频可以播放了
+        video.addEventListener('canplay', function(ev){
+          if (!this.streaming) {
+            //height = video.videoHeight / (video.videoWidth/width);
+            canvas.setAttribute('width', 375);
+            canvas.setAttribute('height', 500);
+            this.streaming = !this.streaming;
+          }
+        }, false)
       },
       methods: {
         deleteImg(id) {
@@ -115,7 +102,7 @@
         },
         shutter() {
           //需要判断媒体流是否就绪
-          if(this.streaming){
+          if(!this.streaming){
             canvas.getContext("2d").drawImage(video, 0, 0, 450, 600);// 将视频画面捕捉后绘制到canvas里面
             this.album.push(canvas.toDataURL('image/png'))
             //img.src = canvas.toDataURL('image/png');// 将canvas的数据传送到img里

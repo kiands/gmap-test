@@ -160,7 +160,7 @@
     </v-row>
     <v-btn @click="showCam()">点击使用網頁拍攝</v-btn>
     <v-btn @click="downloadPics()">下載拍攝的照片</v-btn>
-    <v-btn @click="readExif()">寫入exif信息</v-btn>
+    <v-btn @click="GPSLocationConverter()">顯示GPS座標</v-btn>
     <cam v-if="show" style="z-index: 2; position: absolute; top: 100px" @on-close="cancelOrRecord(arguments)"></cam>
   </v-container>
 </v-app>
@@ -186,6 +186,17 @@
       exif: '',
       show: false
     }),
+    mounted: function() {
+      const inputFiles = document.getElementById("images")
+      let self = this
+      inputFiles.addEventListener('change', function() {
+        var file = document.getElementById("images").files[0]
+        Exif.getData(file, function(){
+          //Orientation = Exif.getTag(this, 'Orientation');
+          self.exif = Exif.getAllTags(this)
+        })
+      })
+    },
     methods: {
       showCam () {
         this.show = true
@@ -225,7 +236,18 @@
         Exif.getData(file, function(){
           //Orientation = Exif.getTag(this, 'Orientation');
           self.exif = Exif.getAllTags(this)
+          console.log(self.exif)
         })
+      },
+      GPSLocationConverter () {
+        if (this.exif["GPSLongitude"] != null) {
+          var GPSLongitude = this.exif["GPSLongitude"]
+          var GPSLatitude = this.exif["GPSLatitude"]
+          var lon = GPSLongitude[0] + GPSLongitude[1]/60 + GPSLongitude[2]/3600
+          var lat = GPSLatitude[0] + GPSLatitude[1]/60 + GPSLatitude[2]/3600
+          var location = {lat:lat,lon:lon}
+          return location
+        }
       }
     }
   }
