@@ -44,7 +44,7 @@ export default {
     },3000)
     if (self.start == true) {
       window.addEventListener('devicemotion', function(event) {
-        if (event.acceleration.x > 5) {
+        if (event.acceleration.x > 0) {
           self.acceleration.push(event.acceleration.x + ' m/s2');
         }
       });
