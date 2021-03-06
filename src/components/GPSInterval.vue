@@ -42,13 +42,13 @@ export default {
         }
       }
     },3000)
-    var acc = setInterval(function(){
-      if (self.start == true) {
-        window.addEventListener('devicemotion', function(event) {
+    if (self.start == true) {
+      window.addEventListener('devicemotion', function(event) {
+        if (event.acceleration.x > 5) {
           self.acceleration.push(event.acceleration.x + ' m/s2');
-        });
-      }
-    },500)
+        }
+      });
+    }
   },
   methods: {
     startRecord () {
