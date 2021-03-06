@@ -10,10 +10,12 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "exif-js": "^2.3.0",
     "pwa-manifest-webpack-plugin": "^1.0.5",
     "register-service-worker": "^1.7.1",
     "vue": "^2.5.2",
+    "vue-axios": "^3.2.4",
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.10.7",
     "vuetify": "^2.3.21"
