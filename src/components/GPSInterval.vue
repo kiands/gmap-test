@@ -4,6 +4,7 @@
         <v-btn @click="stopRecord()">stop</v-btn>
         <v-btn @click="writeRecords()">write</v-btn>
         {{this.location.length}}
+        {{this.acceleration}}
     </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
   data () {
     return {
       location: [],
+      acceleration: [],
       start: false
     }
   },
@@ -40,6 +42,9 @@ export default {
         }
       }
     },3000)
+    window.addEventListener('devicemotion', function(event) {
+      self.acceleration.push(event.acceleration.x + ' m/s2');
+    });
   },
   methods: {
     startRecord () {
@@ -50,7 +55,9 @@ export default {
       this.start = false
     },
     writeRecords: function () {
-			this.axios.post('http://apitest.hzeven.com/api/gps/create',{records: this.location})
+      //等待施工（需要换资料结构，不然会是null）
+      var location = this.location.toString()
+			this.axios.post('http://apitest.hzeven.com/api/gps/create',{records: location})
 		}
   }
 }
