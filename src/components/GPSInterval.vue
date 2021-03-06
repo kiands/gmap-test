@@ -43,6 +43,7 @@ export default {
       }
     },3000)
     window.addEventListener('devicemotion', function(event) {
+      event.interval = 1000
       self.acceleration.push(event.acceleration.x + ' m/s2');
     });
   },
