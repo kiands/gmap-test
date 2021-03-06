@@ -50,7 +50,7 @@ export default {
       this.start = false
     },
     writeRecords: function () {
-			this.axios.post('http://apitest.hzeven.com/gps/create',{records: this.location})
+			this.axios.post('http://apitest.hzeven.com/api/gps/create',{records: this.location})
 		}
   }
 }
