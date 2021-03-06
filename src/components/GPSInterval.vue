@@ -54,11 +54,8 @@ export default {
         self.acceleration.push(event.acceleration.x + ' m/s2');
       }
     }
-    while (this.start == true) {
+    if (this.start == true) {
       window.addEventListener('devicemotion',accDetect);
-    }
-    while (this.start == false) {
-      window.removeEventListener('devicemotion',accDetect);
     }
   },
   methods: {
