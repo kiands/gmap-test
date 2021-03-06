@@ -42,11 +42,24 @@ export default {
         }
       }
     },3000)
-    window.addEventListener('devicemotion', function(event) {
+    // if (this.start == true) {
+    //   window.addEventListener('devicemotion', function(event) {
+    //     if (event.acceleration.x > 2.77 || event.acceleration.x < -2.77) {
+    //       self.acceleration.push(event.acceleration.x + ' m/s2');
+    //     }
+    //   });
+    // }
+    function accDetect(event){
       if (event.acceleration.x > 2.77 || event.acceleration.x < -2.77) {
         self.acceleration.push(event.acceleration.x + ' m/s2');
       }
-    });
+    }
+    while (this.start == true) {
+      window.addEventListener('devicemotion',accDetect);
+    }
+    while (this.start == false) {
+      window.removeEventListener('devicemotion',accDetect);
+    }
   },
   methods: {
     startRecord () {
