@@ -8,6 +8,7 @@ import Counter from '@/components/Counter'
 import NewTodos from '@/components/NewTodos'
 import Parent from '@/components/Parent'
 import Cam from '@/components/Cam'
+import GPSInterval from '@/components/GPSInterval'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/cam',
       name: 'Cam',
       component: Cam
+    },
+    {
+      path: '/GPS',
+      name: 'GPSInterval',
+      component: GPSInterval
     }
   ]
 })

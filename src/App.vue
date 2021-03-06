@@ -10,6 +10,7 @@
       <router-link to="/todos">Go to Todos</router-link>
       <router-link to="/parent">Go to Parent</router-link>
       <router-link to="/Cam">Go to Cam</router-link>
+      <router-link to="/GPS">Go to GPS</router-link>
     </div>
   </div>
 </template>
