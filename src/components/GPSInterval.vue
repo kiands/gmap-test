@@ -2,7 +2,8 @@
     <div>
         <v-btn @click="startRecord()">start</v-btn>
         <v-btn @click="stopRecord()">stop</v-btn>
-        {{this.location}}
+        <v-btn @click="writeRecords()">write</v-btn>
+        {{this.location.length}}
     </div>
 </template>
 
@@ -47,7 +48,10 @@ export default {
     },
     stopRecord () {
       this.start = false
-    }
+    },
+    writeRecords: function () {
+			this.axios.post('http://apitest.hzeven.com/gps/create',{records: this.location})
+		}
   }
 }
 </script>
