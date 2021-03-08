@@ -21,8 +21,8 @@ export default {
   mounted: function () {
     //experimental
     if (true) {
-      let self = this
-      //var self = this
+      //let self = this
+      var self = this
     }
     //production
     console.log(this.start)
