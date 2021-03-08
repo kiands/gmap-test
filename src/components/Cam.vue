@@ -6,7 +6,7 @@
             <video 
               id="video" width=500 height=375
               webkit-playsinline="true"
-              playsinline="true"
+              playsinline
             >
             </video>
         </div>
@@ -90,6 +90,7 @@
           //{ video: { facingMode: { exact: "environment" } }, audio: false }
           video.srcObject = stream;// 将捕获的视频流传递给video，放弃window.URL.createObjectURL(stream)的使用
           var start = document.getElementById("start")
+          //Chrome和Safari表現不同，需要研究
           start.addEventListener('click',() => {
             video.play()
           })
