@@ -19,8 +19,14 @@ export default {
     }
   },
   mounted: function () {
+    //experimental
+    if (true) {
+      //let self = this
+      var self = this
+    }
+    //production
     console.log(this.start)
-    let self = this
+    //let self = this
     var location = setInterval(function(){
       if (self.start == true) {
         if(navigator.geolocation) {
