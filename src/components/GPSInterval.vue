@@ -3,7 +3,7 @@
         <v-btn @click="startRecord()">start</v-btn>
         <v-btn @click="stopRecord()">stop</v-btn>
         <v-btn @click="writeRecords()">write</v-btn>
-        {{this.location.length}}
+        {{this.location}}
         {{this.acceleration}}
     </div>
 </template>
@@ -21,8 +21,8 @@ export default {
   mounted: function () {
     //experimental
     if (true) {
-      //let self = this
-      var self = this
+      let self = this
+      //var self = this
     }
     //production
     console.log(this.start)
