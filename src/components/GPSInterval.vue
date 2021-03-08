@@ -52,7 +52,7 @@ export default {
       var x = event.acceleration.x
       var y = event.acceleration.y
       var z = event.acceleration.z
-      var totalacc = sqrt(x * x + y * y + z * z)
+      var totalacc = Math.sqrt(x * x + y * y + z * z)
       if (totalacc > 2.77) {
         self.acceleration.push(totalacc + ' m/s2');
       }
