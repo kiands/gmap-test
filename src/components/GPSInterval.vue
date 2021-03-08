@@ -49,8 +49,12 @@ export default {
       }
     },3000)
     window.addEventListener('devicemotion', function(event) {
-      if (event.acceleration.x > 2.77 || event.acceleration.x < -2.77) {
-        self.acceleration.push(event.acceleration.x + ' m/s2');
+      var x = event.acceleration.x
+      var y = event.acceleration.y
+      var z = event.acceleration.z
+      var totalacc = sqrt(x * x + y * y + z * z)
+      if (totalacc > 2.77) {
+        self.acceleration.push(totalacc + ' m/s2');
       }
     });
   },
