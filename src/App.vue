@@ -11,6 +11,8 @@
       <router-link to="/parent">Go to Parent</router-link>
       <router-link to="/Cam">Go to Cam</router-link>
       <router-link to="/GPS">Go to GPS</router-link>
+      <router-link to="/Slides">Go to Slides</router-link>
+      <router-link to="/Menus">Go to Menus</router-link>
     </div>
   </div>
 </template>

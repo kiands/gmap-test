@@ -9,6 +9,8 @@ import NewTodos from '@/components/NewTodos'
 import Parent from '@/components/Parent'
 import Cam from '@/components/Cam'
 import GPSInterval from '@/components/GPSInterval'
+import Slides from '@/components/SlidesControl'
+import Menus from '@/components/MenusControl'
 
 Vue.use(Router)
 
@@ -58,6 +60,16 @@ export default new Router({
       path: '/GPS',
       name: 'GPSInterval',
       component: GPSInterval
+    },
+    {
+      path: '/Slides',
+      name: 'Slides',
+      component: Slides
+    },
+    {
+      path: '/Menus',
+      name: 'Menus',
+      component: Menus
     }
   ]
 })
